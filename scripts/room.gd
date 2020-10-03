@@ -1,8 +1,9 @@
 extends Control
 
 
-onready var viewport = get_viewport()
 
+
+onready var viewport = get_viewport()
 
 func saveviewport():
 	var vt = viewport.get_texture()
@@ -58,3 +59,8 @@ func _enableplat3(area):
 
 func _enable_minions(body):
 	$screen.get_node("AnimationPlayer").set_current_animation("movement#")
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	$ViewportContainer.show()
+	$ViewportContainer.get_node("Viewport").set_disable_input(false)

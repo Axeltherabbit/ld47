@@ -2,9 +2,19 @@ extends Node2D
 
 onready var pg = $pg
 
+
+func changescene(vp, scene):
+	vp.get_children()[0].queue_free()
+	vp.add_child(load(scene).instance())
+
+
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func _input(event):
+	if $yesno.is_visible():
+		if Input.is_key_pressed(KEY_N):
+			$yesyou.show()
+		if Input.is_key_pressed(KEY_Y):
+			changescene(get_viewport(),"res://scenes/room.tscn")
 
 func _process(delta):
 	if pg.position.x>810:
@@ -17,28 +27,11 @@ func _process(delta):
 		pg.position.y = 605
 
 
-
-func _on_LineEdit_text_entered(new_text):
-	$Iam.hide()
-	$whoare.hide()
-	$LineEdit.hide()
-	$areyou.show()
-	$YesButton.show()
-	$NoButton.show()
-
 var c=0
 func _on_Timer_timeout():
 	c+=1
 	match c:
 		1: $Iam.show()
 		2: $whoare.show()
-		3: $LineEdit.show()
-
-
-func _on_YesButton_pressed():
-	get_tree().change_scene("res://scenes/room.tscn")
-
-
-func _on_NoButton_pressed():
-	$NoButton.hide()
-	$yesyou.show()
+		3: $areyou.show()
+		4: $yesno.show()

@@ -16,7 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="ld47"
+run/main_scene="res://scenes/menu.tscn"
 config/icon="res://assets/2D/icon.png"
+
+[autoload]
+
+Global="*res://global.gd"
 
 [display]
 

@@ -18,18 +18,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="start" type="Button" parent="."]
-anchor_right = 0.263
-anchor_bottom = 0.065
-margin_left = 359.0
-margin_top = 142.0
-margin_right = 371.0
-margin_bottom = 162.0
-text = "Start"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="istructions" type="Button" parent="."]
 anchor_right = 0.263
 anchor_bottom = 0.065
@@ -99,6 +87,5 @@ __meta__ = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="istructions" to="." method="_on_istructions_pressed"]
 [connection signal="pressed" from="credits" to="." method="_on_credits_pressed"]

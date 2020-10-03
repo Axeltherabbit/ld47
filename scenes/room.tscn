@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/2D/room.png" type="Texture" id=1]
 [ext_resource path="res://scripts/room.gd" type="Script" id=2]
@@ -6,30 +6,31 @@
 [ext_resource path="res://scenes/screen.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/2D/rotatebutton.png" type="Texture" id=5]
 [ext_resource path="res://assets/2D/platform.png" type="Texture" id=6]
+[ext_resource path="res://scenes/viewport.tscn" type="PackedScene" id=7]
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=1]
 resource_name = "movement#"
-length = 10.0
+length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
-tracks/0/loop_wrap = true
+tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 10 ),
+"times": PoolRealArray( 0, 2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 185.829, 178.342 ), Vector2( 712.476, 180.862 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 40.7142, 40.5396 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 436.073, 41.7654 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 5.0
 loop = true
 tracks/0/type = "value"
@@ -45,16 +46,16 @@ tracks/0/keys = {
 "values": [ 0.0, 0.0, 360.0 ]
 }
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 77.4304, 10 )
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 80.9754, 10 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 74.7591, 13.0685 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 80.5817, 26.8974 )
 
 [node name="room" type="Control"]
@@ -69,7 +70,7 @@ __meta__ = {
 position = Vector2( 185.829, 178.342 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="screen"]
-anims/movement# = SubResource( 8 )
+anims/movement# = SubResource( 1 )
 
 [node name="background" type="Sprite" parent="."]
 modulate = Color( 0.54902, 0.156863, 0.792157, 1 )
@@ -86,28 +87,28 @@ texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="startbutton"]
 position = Vector2( 3, 3 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="roomcollisions" type="StaticBody2D" parent="."]
 position = Vector2( 374.577, 95.8917 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="roomcollisions"]
 position = Vector2( 43.4509, 531.899 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="roomcollisions"]
 position = Vector2( 26.9695, -118.366 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="roomcollisions"]
 position = Vector2( 456.984, 241.227 )
 rotation = 1.5708
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="roomcollisions"]
 position = Vector2( -401.546, 209.763 )
 rotation = 1.5708
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="pg" parent="." instance=ExtResource( 3 )]
 position = Vector2( 374.577, 95.8917 )
@@ -131,7 +132,7 @@ rotating = true
 current = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D"]
-anims/rotation = SubResource( 3 )
+anims/rotation = SubResource( 4 )
 
 [node name="1seccounter" type="Timer" parent="."]
 autostart = true
@@ -147,7 +148,7 @@ visible = false
 
 [node name="CollisionShape" type="CollisionShape2D" parent="platforms/enable2"]
 position = Vector2( 278.443, 433.413 )
-shape = SubResource( 7 )
+shape = SubResource( 5 )
 disabled = true
 
 [node name="enable3" type="Area2D" parent="platforms"]
@@ -165,13 +166,13 @@ position = Vector2( 330.03, 578.601 )
 
 [node name="CollisionShape" type="CollisionShape2D" parent="platforms/enable1"]
 position = Vector2( 3.3674, -44.8984 )
-shape = SubResource( 5 )
+shape = SubResource( 7 )
 disabled = true
 
 [node name="platform1" type="CollisionShape2D" parent="platforms"]
 visible = false
 position = Vector2( 330.03, 578.601 )
-shape = SubResource( 4 )
+shape = SubResource( 8 )
 disabled = true
 
 [node name="Sprite" type="Sprite" parent="platforms/platform1"]
@@ -182,7 +183,7 @@ texture = ExtResource( 6 )
 [node name="platform2" type="CollisionShape2D" parent="platforms"]
 visible = false
 position = Vector2( 278.439, 472.246 )
-shape = SubResource( 4 )
+shape = SubResource( 8 )
 disabled = true
 
 [node name="Sprite2" type="Sprite" parent="platforms/platform2"]
@@ -193,13 +194,30 @@ texture = ExtResource( 6 )
 [node name="platform3" type="CollisionShape2D" parent="platforms"]
 visible = false
 position = Vector2( 123.667, 361.127 )
-shape = SubResource( 4 )
+shape = SubResource( 8 )
 disabled = true
 
 [node name="Sprite3" type="Sprite" parent="platforms/platform3"]
 position = Vector2( 4.71623, 2.7663 )
 scale = Vector2( -1.92216, 2.01614 )
 texture = ExtResource( 6 )
+
+[node name="ViewportContainer" type="ViewportContainer" parent="."]
+visible = false
+anchor_right = 0.219
+anchor_bottom = 0.237
+margin_left = 50.7968
+margin_top = 134.929
+margin_right = 90.7968
+margin_bottom = 192.729
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" parent="ViewportContainer" instance=ExtResource( 7 )]
+render_target_update_mode = 0
+gui_disable_input = true
+[connection signal="animation_finished" from="screen/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="body_entered" from="startbutton" to="." method="_on_startbutton_body_entered"]
 [connection signal="body_exited" from="startbutton" to="." method="_on_startbutton_body_exited"]
 [connection signal="timeout" from="1seccounter" to="." method="_on_1seccounter_timeout"]

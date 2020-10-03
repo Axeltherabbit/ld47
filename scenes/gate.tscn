@@ -93,19 +93,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LineEdit" type="LineEdit" parent="."]
-visible = false
-modulate = Color( 1, 1, 1, 0.635294 )
-margin_left = 274.158
-margin_top = 319.572
-margin_right = 364.158
-margin_bottom = 343.572
-rect_scale = Vector2( 2.59979, 1.65391 )
-max_length = 10
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="areyou" type="Label" parent="."]
 visible = false
 margin_left = 115.766
@@ -121,32 +108,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="YesButton" type="Button" parent="."]
-visible = false
-modulate = Color( 1, 1, 1, 0.588235 )
-margin_left = 172.031
-margin_top = 367.201
-margin_right = 205.031
-margin_bottom = 387.201
-rect_scale = Vector2( 5.96, 4.28 )
-text = "Yes"
-
-[node name="NoButton" type="Button" parent="."]
-visible = false
-modulate = Color( 1, 1, 1, 0.521569 )
-margin_left = 421.495
-margin_top = 369.721
-margin_right = 454.495
-margin_bottom = 389.721
-rect_scale = Vector2( 5.96, 4.28 )
-text = "No"
-
 [node name="yesyou" type="Label" parent="."]
 visible = false
-margin_left = 440.664
-margin_top = 390.48
-margin_right = 526.664
-margin_bottom = 404.48
+margin_left = 453.392
+margin_top = 502.203
+margin_right = 539.392
+margin_bottom = 516.203
 rect_scale = Vector2( 1.78741, 2.31917 )
 custom_colors/font_color = Color( 0.290196, 0.239216, 0.47451, 1 )
 custom_colors/font_outline_modulate = Color( 1, 0.121569, 0.121569, 1 )
@@ -156,9 +123,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="yesno" type="Label" parent="."]
+visible = false
+margin_left = 248.331
+margin_top = 374.924
+margin_right = 308.331
+margin_bottom = 388.924
+rect_scale = Vector2( 5.20381, 7.96011 )
+custom_colors/font_color = Color( 0.568627, 0.129412, 0.129412, 1 )
+custom_colors/font_color_shadow = Color( 0.670588, 0.372549, 1, 1 )
+text = "(Y)es (N)o"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Timer" type="Timer" parent="."]
 autostart = true
-[connection signal="text_entered" from="LineEdit" to="." method="_on_LineEdit_text_entered"]
-[connection signal="pressed" from="YesButton" to="." method="_on_YesButton_pressed"]
-[connection signal="pressed" from="NoButton" to="." method="_on_NoButton_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

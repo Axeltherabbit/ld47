@@ -5,6 +5,10 @@ extends Control
 # var a = 2
 # var b = "text"
 
+func changescene(vp, scene):
+	vp.get_children()[0].queue_free()
+	vp.add_child(load(scene).instance())
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,9 +19,9 @@ func _ready():
 #func _process(delta):
 #	pass
 
-
-func _on_start_pressed():
-	get_tree().change_scene("res://scenes/cave.tscn")
+func _input(event):
+	if Input.is_key_pressed(KEY_E):
+		changescene(get_viewport(),"res://scenes/cave.tscn")
 
 
 func _on_istructions_pressed():

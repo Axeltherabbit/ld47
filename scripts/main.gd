@@ -1,9 +1,6 @@
 extends Node2D
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
 onready var pg = $pg
 onready var gate = $gate
@@ -11,6 +8,9 @@ onready var gatelabel = $gatelabel
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
+func changescene(vp, scene):
+	vp.get_children()[0].queue_free()
+	vp.add_child(load(scene).instance())
 
 
 
@@ -32,7 +32,7 @@ func _process(delta):
 var insidegate = false
 func _input(event):
 	if Input.is_key_pressed(KEY_E) and insidegate:
-		get_tree().change_scene("res://scenes/gate.tscn")
+		changescene(get_viewport(),"res://scenes/gate.tscn")
 	
 
 func _on_Area2D_body_entered(body):
