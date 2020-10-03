@@ -82,7 +82,8 @@ Graphics : Gimp
 Game engine : Godot
 Music : https://beepbox.co/
 I have used this shader : https://www.youtube.com/watch?v=qDT-nJXmfL0
-"
+
+source code: https://github.com/Axeltherabbit/ld47 "
 selection_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
