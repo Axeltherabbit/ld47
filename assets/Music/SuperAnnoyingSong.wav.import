@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/SuperAnnoyingSong.wav-6e5a6702ae613931d58a8afa2ca5877e.sample"
+
+[deps]
+
+source_file="res://assets/Music/SuperAnnoyingSong.wav"
+dest_files=[ "res://.import/SuperAnnoyingSong.wav-6e5a6702ae613931d58a8afa2ca5877e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

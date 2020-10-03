@@ -9,7 +9,7 @@ onready var gatelabel = $gatelabel
 func _ready():
 	pass # Replace with function body.
 func changescene(vp, scene):
-	vp.get_children()[0].queue_free()
+	for child in vp.get_children(): child.queue_free()
 	vp.add_child(load(scene).instance())
 
 

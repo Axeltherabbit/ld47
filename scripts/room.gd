@@ -11,7 +11,7 @@ func saveviewport():
 	img.flip_y()
 	img.resize(400,300)
 	img.lock()
-	img.save_png("res://test.png")
+	img.save_png("user://room.png")
 
 func _ready():
 	saveviewport()

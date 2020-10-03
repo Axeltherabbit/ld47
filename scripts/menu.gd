@@ -6,9 +6,8 @@ extends Control
 # var b = "text"
 
 func changescene(vp, scene):
-	vp.get_children()[0].queue_free()
+	for child in vp.get_children(): child.queue_free()
 	vp.add_child(load(scene).instance())
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

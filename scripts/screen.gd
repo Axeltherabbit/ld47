@@ -7,7 +7,7 @@ extends Sprite
 func updatetex():
 	
 	var file = File.new()
-	file.open("res://test.png", File.READ)
+	file.open("user://room.png", File.READ)
 	var bytes = file.get_buffer(file.get_len())
 	file.close()
 	var img = Image.new()

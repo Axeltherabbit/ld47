@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SuperAnnoyingSong.ogg-c282f716d2e0f7ea1b95c9b1c08b7ef7.oggstr"
+
+[deps]
+
+source_file="res://assets/Music/SuperAnnoyingSong.ogg"
+dest_files=[ "res://.import/SuperAnnoyingSong.ogg-c282f716d2e0f7ea1b95c9b1c08b7ef7.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

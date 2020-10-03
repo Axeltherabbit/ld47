@@ -55,7 +55,7 @@ shader_param/Samples = 8
 material = SubResource( 3 )
 script = ExtResource( 3 )
 
-[node name="Sprite2" type="Sprite" parent="."]
+[node name="background" type="Sprite" parent="."]
 material = SubResource( 5 )
 texture = ExtResource( 1 )
 centered = false
