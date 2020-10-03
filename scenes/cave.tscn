@@ -1,0 +1,161 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://assets/2D/cave_texture.png" type="Texture" id=1]
+[ext_resource path="res://assets/2D/cave_infinity.png" type="Texture" id=2]
+[ext_resource path="res://assets/2D/cavebackground.png" type="Texture" id=3]
+[ext_resource path="res://scripts/main.gd" type="Script" id=4]
+[ext_resource path="res://scenes/pg.tscn" type="PackedScene" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 182.176, 53.9945 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 21.8499, 53.9944 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 59.2864, 191.589 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 92.9696, 127.598 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 56.1485, 76.0519 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 72.7182, 119.727 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 39.2769, 23.7837 )
+
+[node name="cave" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="cave" type="Sprite" parent="."]
+position = Vector2( 400, 300 )
+texture = ExtResource( 3 )
+
+[node name="collisions" type="StaticBody2D" parent="."]
+position = Vector2( 400, 300 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisions"]
+position = Vector2( -126.191, 255.671 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="collisions"]
+position = Vector2( 61.4657, 260.896 )
+rotation = 0.244346
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="collisions"]
+position = Vector2( -316.35, 248.778 )
+rotation = 2.28638
+scale = Vector2( 1.03988, 0.857644 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="collisions"]
+position = Vector2( -214.757, -294.114 )
+rotation = 0.865683
+scale = Vector2( 1.03988, 0.857644 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="collisions"]
+position = Vector2( 415.442, -254.429 )
+rotation = 2.51502
+scale = Vector2( 1.03988, 0.857644 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="collisions"]
+position = Vector2( -365.56, -216.331 )
+rotation = 1.23744
+scale = Vector2( 1.03988, 0.857644 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="collisions"]
+position = Vector2( -470.56, 224.669 )
+rotation = 1.23744
+scale = Vector2( 1.03988, 0.857644 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="collisions"]
+position = Vector2( 531.942, 165.209 )
+rotation = 1.23744
+scale = Vector2( 1.03988, 0.857644 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="collisions"]
+position = Vector2( -84.0674, -473.396 )
+rotation = 1.23744
+scale = Vector2( 1.03988, 0.857644 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="collisions"]
+position = Vector2( 46.7454, -557.829 )
+rotation = 1.23744
+scale = Vector2( 1.03988, 0.857644 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="collisions"]
+position = Vector2( 344.047, -413.935 )
+rotation = 1.23744
+scale = Vector2( 1.03988, 0.857644 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D17" type="CollisionShape2D" parent="collisions"]
+position = Vector2( 264.37, -583.992 )
+rotation = 1.23744
+scale = Vector2( 1.03988, 0.857644 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="collisions"]
+position = Vector2( 467.725, -234.365 )
+rotation = 1.23744
+scale = Vector2( 1.03988, 0.857644 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="collisions"]
+position = Vector2( 467.725, -234.365 )
+rotation = 1.23744
+scale = Vector2( 1.03988, 0.857644 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="collisions"]
+position = Vector2( 253.425, 272.975 )
+scale = Vector2( 1.03988, 0.857644 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="collisions"]
+position = Vector2( 376.286, 211.544 )
+scale = Vector2( 1.03988, 0.857644 )
+shape = SubResource( 6 )
+
+[node name="gatelabel" type="Label" parent="."]
+visible = false
+margin_left = 544.436
+margin_top = 148.744
+margin_right = 675.436
+margin_bottom = 162.744
+text = "Enter the gate with E"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="gate" type="Sprite" parent="."]
+visible = false
+position = Vector2( 591.653, 300.197 )
+texture = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="gate"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="gate/Area2D"]
+position = Vector2( 16.0362, -202.234 )
+rotation = 0.760963
+shape = SubResource( 7 )
+
+[node name="pg" parent="." instance=ExtResource( 5 )]
+position = Vector2( 286.228, 297.452 )
+
+[node name="cavetextures" type="Sprite" parent="."]
+position = Vector2( 400, 300 )
+texture = ExtResource( 1 )
+[connection signal="body_entered" from="gate/Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="gate/Area2D" to="." method="_on_Area2D_body_exited"]

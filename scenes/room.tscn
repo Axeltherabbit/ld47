@@ -1,0 +1,96 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/2D/room.png" type="Texture" id=1]
+[ext_resource path="res://scripts/room.gd" type="Script" id=2]
+[ext_resource path="res://scenes/pg.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/screen.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 436.073, 41.7654 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "rotation"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( -0.3, 0.1, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 360.0 ]
+}
+
+[node name="room" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="screen" parent="." instance=ExtResource( 4 )]
+position = Vector2( 160.402, 229.196 )
+
+[node name="Sprite" type="Sprite" parent="."]
+show_behind_parent = true
+texture = ExtResource( 1 )
+centered = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 374.577, 95.8917 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 43.4509, 531.899 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 26.9695, -118.366 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 456.984, 241.227 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -401.546, 209.763 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="pg" parent="." instance=ExtResource( 3 )]
+position = Vector2( 374.577, 95.8917 )
+
+[node name="welcome" type="Label" parent="."]
+visible = false
+margin_left = 246.855
+margin_top = 60.3894
+margin_right = 386.855
+margin_bottom = 74.3894
+rect_scale = Vector2( 2.18953, 4.04502 )
+custom_colors/font_color = Color( 1, 0, 0.607843, 1 )
+text = "Welcome in the room"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 400, 300 )
+rotating = true
+current = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D"]
+anims/rotation = SubResource( 2 )
+
+[node name="1seccounter" type="Timer" parent="."]
+autostart = true
+
+[node name="viewportupdater" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+[connection signal="timeout" from="1seccounter" to="." method="_on_1seccounter_timeout"]
+[connection signal="timeout" from="viewportupdater" to="." method="_viewportupdater"]

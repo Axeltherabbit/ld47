@@ -17,7 +17,7 @@ func _ready():
 
 
 func _on_start_pressed():
-	get_tree().change_scene("res://main.tscn")
+	get_tree().change_scene("res://scenes/cave.tscn")
 
 
 func _on_istructions_pressed():
