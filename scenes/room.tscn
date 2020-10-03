@@ -1,15 +1,35 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/2D/room.png" type="Texture" id=1]
 [ext_resource path="res://scripts/room.gd" type="Script" id=2]
 [ext_resource path="res://scenes/pg.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/screen.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/2D/rotatebutton.png" type="Texture" id=5]
+[ext_resource path="res://assets/2D/platform.png" type="Texture" id=6]
+
+[sub_resource type="Animation" id=8]
+resource_name = "movement#"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 185.829, 178.342 ), Vector2( 712.476, 180.862 ) ]
+}
 
 [sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 40.7142, 40.5396 )
+
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 436.073, 41.7654 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "rotation"
+[sub_resource type="Animation" id=3]
 length = 5.0
 loop = true
 tracks/0/type = "value"
@@ -25,6 +45,18 @@ tracks/0/keys = {
 "values": [ 0.0, 0.0, 360.0 ]
 }
 
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 77.4304, 10 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 80.9754, 10 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 74.7591, 13.0685 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 80.5817, 26.8974 )
+
 [node name="room" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -34,33 +66,48 @@ __meta__ = {
 }
 
 [node name="screen" parent="." instance=ExtResource( 4 )]
-position = Vector2( 160.402, 229.196 )
+position = Vector2( 185.829, 178.342 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="screen"]
+anims/movement# = SubResource( 8 )
+
+[node name="background" type="Sprite" parent="."]
+modulate = Color( 0.54902, 0.156863, 0.792157, 1 )
 show_behind_parent = true
 texture = ExtResource( 1 )
 centered = false
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="startbutton" type="Area2D" parent="."]
+visible = false
+position = Vector2( 686.286, 413.54 )
+
+[node name="sprite" type="Sprite" parent="startbutton"]
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="startbutton"]
+position = Vector2( 3, 3 )
+shape = SubResource( 1 )
+
+[node name="roomcollisions" type="StaticBody2D" parent="."]
 position = Vector2( 374.577, 95.8917 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="roomcollisions"]
 position = Vector2( 43.4509, 531.899 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="roomcollisions"]
 position = Vector2( 26.9695, -118.366 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="roomcollisions"]
 position = Vector2( 456.984, 241.227 )
 rotation = 1.5708
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="roomcollisions"]
 position = Vector2( -401.546, 209.763 )
 rotation = 1.5708
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="pg" parent="." instance=ExtResource( 3 )]
 position = Vector2( 374.577, 95.8917 )
@@ -84,7 +131,7 @@ rotating = true
 current = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D"]
-anims/rotation = SubResource( 2 )
+anims/rotation = SubResource( 3 )
 
 [node name="1seccounter" type="Timer" parent="."]
 autostart = true
@@ -92,5 +139,71 @@ autostart = true
 [node name="viewportupdater" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
+
+[node name="platforms" type="StaticBody2D" parent="."]
+
+[node name="enable2" type="Area2D" parent="platforms"]
+visible = false
+
+[node name="CollisionShape" type="CollisionShape2D" parent="platforms/enable2"]
+position = Vector2( 278.443, 433.413 )
+shape = SubResource( 7 )
+disabled = true
+
+[node name="enable3" type="Area2D" parent="platforms"]
+visible = false
+position = Vector2( 182.987, 462.987 )
+
+[node name="CollisionShape" type="CollisionShape2D" parent="platforms/enable3"]
+position = Vector2( -54.1586, -141.676 )
+shape = SubResource( 6 )
+disabled = true
+
+[node name="enable1" type="Area2D" parent="platforms"]
+visible = false
+position = Vector2( 330.03, 578.601 )
+
+[node name="CollisionShape" type="CollisionShape2D" parent="platforms/enable1"]
+position = Vector2( 3.3674, -44.8984 )
+shape = SubResource( 5 )
+disabled = true
+
+[node name="platform1" type="CollisionShape2D" parent="platforms"]
+visible = false
+position = Vector2( 330.03, 578.601 )
+shape = SubResource( 4 )
+disabled = true
+
+[node name="Sprite" type="Sprite" parent="platforms/platform1"]
+position = Vector2( -6.33835, -7.05219 )
+scale = Vector2( 2.1107, 1.18449 )
+texture = ExtResource( 6 )
+
+[node name="platform2" type="CollisionShape2D" parent="platforms"]
+visible = false
+position = Vector2( 278.439, 472.246 )
+shape = SubResource( 4 )
+disabled = true
+
+[node name="Sprite2" type="Sprite" parent="platforms/platform2"]
+position = Vector2( -5.25815, 5.01599 )
+scale = Vector2( 2.1107, 2.18449 )
+texture = ExtResource( 6 )
+
+[node name="platform3" type="CollisionShape2D" parent="platforms"]
+visible = false
+position = Vector2( 123.667, 361.127 )
+shape = SubResource( 4 )
+disabled = true
+
+[node name="Sprite3" type="Sprite" parent="platforms/platform3"]
+position = Vector2( 4.71623, 2.7663 )
+scale = Vector2( -1.92216, 2.01614 )
+texture = ExtResource( 6 )
+[connection signal="body_entered" from="startbutton" to="." method="_on_startbutton_body_entered"]
+[connection signal="body_exited" from="startbutton" to="." method="_on_startbutton_body_exited"]
 [connection signal="timeout" from="1seccounter" to="." method="_on_1seccounter_timeout"]
 [connection signal="timeout" from="viewportupdater" to="." method="_viewportupdater"]
+[connection signal="body_entered" from="platforms/enable2" to="." method="_enableplat3"]
+[connection signal="body_entered" from="platforms/enable3" to="." method="_enable_minions"]
+[connection signal="body_entered" from="platforms/enable1" to="." method="_enableplat2"]
