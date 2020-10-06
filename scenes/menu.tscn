@@ -115,15 +115,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
+[node name="warning" type="Label" parent="."]
 margin_left = 49.3884
 margin_top = 443.372
 margin_right = 705.388
 margin_bottom = 477.372
 rect_scale = Vector2( 1.08146, 3.47856 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "This is a web version the engine has problems with the export, please try the binaries if you can
-Shaders are disabled, physics works weird and might lag."
+text = "This is a web version please try the binaries if you can
+Shaders are disabled and might lag."
 align = 1
 valign = 1
 [connection signal="pressed" from="istructions" to="." method="_on_istructions_pressed"]
