@@ -23,7 +23,7 @@ func _input(event):
 	jumpkey = Input.is_key_pressed(KEY_SPACE)
 
  
-func _process(delta):
+func _physics_process(delta):
 	if movement.x < 0 : sprite.set_flip_h(true)
 	else : sprite.set_flip_h(false)
 	
